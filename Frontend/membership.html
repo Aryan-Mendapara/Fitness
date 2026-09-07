@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FITNESS | Membership</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="membership-body">
@@ -26,9 +27,9 @@
 
         </ul>
 
-        <div class="nav__actions">
-            <a href="login.html" class="btn btn--secondary">Login</a>
-            <a href="login.html" class="btn">Join Now</a>
+        <div class="nav__actions" id="auth-actions">
+            <a href="login.html" class="btn btn--secondary"><i class="bi bi-box-arrow-in-right auth-icon"></i>Login</a>
+            <a href="login.html" class="btn join-now-link">Join Now</a>
         </div>
     </nav>
 
@@ -279,11 +280,12 @@
                     </a>
                 </div>
                 <div class="whatsapp-image">
-                    <img src="assets/logo.jpeg" alt="WhatsApp Contact">
+                    <img src="assets/FITNESS LOGO.png" alt="FITNESS Gym logo">
                 </div>
             </div>
         </section>
     </main>
+    <script src="auth.js"></script>
 </body>
 
 </html>

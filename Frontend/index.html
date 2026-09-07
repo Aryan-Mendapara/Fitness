@@ -7,6 +7,7 @@
     <title>FITNESS | Transform Your Body</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head> 
 
 <body>
@@ -28,9 +29,9 @@
             <li><a href="community.html">Community</a></li>
         </ul>
 
-        <div class="nav__actions">
-            <a href="login.html" class="btn btn--secondary">Login</a>
-            <a href="login.html" class="btn">Join Now</a>
+        <div class="nav__actions" id="auth-actions">
+            <a href="login.html" class="btn btn--secondary"><i class="bi bi-box-arrow-in-right auth-icon"></i>Login</a>
+            <a href="login.html" class="btn join-now-link">Join Now</a>
         </div>
     </nav>
 
@@ -44,8 +45,8 @@
             </h1>
 
             <p>
-                Push your limits and achieve your fitness goals
-                with world-class trainers and modern equipment.
+                Build strength, improve endurance, and achieve your fitness goals
+                with expert trainers and modern equipment.
             </p>
 
             <a href="login.html" class="btn">Get Started</a>
@@ -63,26 +64,29 @@
         <div class="card__grid">
 
             <div class="card">
+                <img class="card__image" src="assets/Strength Training photo.jpg" alt="Strength training with weights">
                 <h3>Strength Training</h3>
                 <p>
-                    Build strength and muscle with our professional
-                    strength training programs.
+                    Build strength and muscle through expert-led training
+                    programs designed for steady progress.
                 </p>
             </div>
 
             <div class="card">
+                <img class="card__image" src="assets/cardio photo .jpeg" alt="Cardio workout equipment">
                 <h3>Cardio Training</h3>
                 <p>
                     Improve your stamina and cardiovascular health
-                    with our cardio workouts.
+                    with focused, energizing cardio workouts.
                 </p>
             </div>
 
             <div class="card">
+                <img class="card__image" src="assets/Personal Training photo.jpeg" alt="Personal training session">
                 <h3>Personal Training</h3>
                 <p>
-                    Get personalized guidance from our certified
-                    professional trainers.
+                    Get personalized guidance from certified trainers
+                    who keep every workout focused on your goals.
                 </p>
             </div>
 
@@ -100,23 +104,29 @@
         <div class="card__grid">
 
             <div class="card">
+                <img class="card__image" src="assets/Modern Gym photo.jpg" alt="Modern gym equipment">
                 <h3>Modern Equipment</h3>
                 <p>
-                    Top-quality equipment available for your workouts.
+                    Use modern, well-maintained equipment for safe,
+                    effective workouts.
                 </p>
             </div>
 
             <div class="card">
+                <img class="card__image" src="assets/Personal Training photo.jpeg" alt="Expert personal trainer coaching a member">
                 <h3>Expert Trainers</h3>
                 <p>
-                    Certified trainers to help you reach your fitness goals.
+                    Get guidance from certified trainers who keep
+                    every session focused on your goals.
                 </p>
             </div>
 
             <div class="card">
+                <img class="card__image" src="assets/fitness classis photo.jpeg" alt="Fitness class in a modern gym">
                 <h3>Flexible Hours</h3>
                 <p>
-                    Workout at a time that fits your schedule.
+                    Choose a training time that fits your schedule
+                    and keeps your routine consistent.
                 </p>
             </div>
 
@@ -146,7 +156,8 @@
         </h2>
 
         <p>
-            Train together, stay motivated and achieve your goals together.
+            Train together, stay motivated, and reach your goals
+            with our supportive fitness community.
         </p>
 
     </section>
@@ -158,7 +169,7 @@
             Ready to <span>Transform?</span>
         </h2>
 
-        <a href="login.html" class="btn">Join Now</a>
+        <a href="login.html" class="btn join-now-link">Join Now</a>
 
     </section>
 
@@ -169,6 +180,7 @@
         </p>
     </footer>
 
+    <script src="auth.js"></script>
 </body>
 
 </html>
