@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FITNESS - Join Now</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 15px;
+        }
+
+        .container {
+            width: 850px;
+            background: #1b1b1b;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 35px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 span {
+            color: #f9ac54cc;
+        }
+
+        .header p {
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full {
+            grid-column: span 2;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #3b3b3b;
+            background: #292929;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #f9ac54cc;
+            box-shadow: 0 0 8px rgba(255,60,0,0.2);
+        }
+
+        select option {
+            background: #292929;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        .gender {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            height: 45px;
+        }
+
+        .gender label {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+        }
+
+        .gender input {
+            width: auto;
+            accent-color: #f9ac54cc;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .terms input {
+            width: auto;
+            accent-color: #f9ac54cc;
+        }
+
+        .terms label {
+            margin: 0;
+            color: #aaa;
+        }
+
+        .submit-btn {
+            grid-column: span 2;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #f9ac54cc;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #f9ac54;
+            transform: translateY(-2px);
+        }
+
+        .success {
+            display: none;
+            margin-top: 20px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            color: #00e878;
+            border: 1px solid #00c864;
+            background: rgba(0,200,100,0.1);
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back a:hover {
+            color: #f9ac54cc;
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                padding: 25px 20px;
+            }
+
+            .form {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: span 1;
+            }
+
+            .submit-btn {
+                grid-column: span 1;
+            }
+
+            .gender {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>JOIN <span>FITNESS</span></h1>
+            <p>Start your fitness journey today</p>
+        </div>
+
+        <form class="form" id="joinForm">
+
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age *</label>
+                <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter your age"
+                    min="10"
+                    max="100"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Gender *</label>
+
+                <div class="gender">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            required
+                        >
+                        Male
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female"
+                        >
+                        Female
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Other"
+                        >
+                        Other
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Contact Number *</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter contact number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="plan">Membership Plan *</label>
+
+                <select id="plan" required>
+
+                    <option value="">Select membership</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="3 Months">3 Months</option>
+                    <option value="6 Months">6 Months</option>
+                    <option value="12 Months">12 Months</option>
+
+                </select>
+            </div>
+
+            <div class="form-group full">
+                <label for="address">Address</label>
+
+                <textarea
+                    id="address"
+                    placeholder="Enter your address"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="emergencyName">
+                    Emergency Contact Name
+                </label>
+
+                <input
+                    type="text"
+                    id="emergencyName"
+                    placeholder="Emergency contact name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="emergencyPhone">
+                    Emergency Contact Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="emergencyPhone"
+                    placeholder="Emergency contact number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                >
+            </div>
+
+            <div class="terms full">
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                >
+
+                <label for="terms">
+                    I agree to the gym membership terms and conditions.
+                </label>
+
+            </div>
+
+            <button type="submit" class="submit-btn">
+                JOIN NOW
+            </button>
+
+        </form>
+
+        <div class="success" id="successMessage">
+            🎉 Registration successful! Welcome to FITNESS.
+        </div>
+
+        <div class="back">
+            <a href="index.html">← Back to Home</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        document.getElementById("joinForm").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const phone = document.getElementById("phone").value;
+            const plan = document.getElementById("plan").value;
+
+            console.log("New Gym Member:");
+            console.log("Name:", name);
+            console.log("Age:", age);
+            console.log("Contact:", phone);
+            console.log("Plan:", plan);
+
+            document.getElementById("successMessage").style.display = "block";
+
+            document.getElementById("joinForm").reset();
+
+            document.getElementById("successMessage")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        });
+
+    </script>
+
+</body>
+</html>

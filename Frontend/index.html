@@ -58,8 +58,10 @@
     <section id="program" class="section">
 
         <h2>
-            Our <span>Programs</span>
+            <span>Our Programs</span>
+            <button type="button" class="section-add__button" id="program-add-button">+ Add</button>
         </h2>
+
 
         <div class="card__grid">
 
@@ -92,13 +94,15 @@
 
         </div>
 
+
     </section>
 
     <!-- Services -->
     <section id="service" class="section">
 
         <h2>
-            Our <span>Services</span>
+            <span>Our Services</span>
+            <button type="button" class="section-add__button" id="service-add-button">+ Add</button>
         </h2>
 
         <div class="card__grid">
@@ -131,6 +135,7 @@
             </div>
 
         </div>
+
 
     </section>
 
@@ -179,6 +184,35 @@
             &copy; 2026 FITNESS Gym. All rights reserved.
         </p>
     </footer>
+
+    <dialog class="admin-modal" id="program-modal">
+        <form method="dialog" id="program-form">
+            <div class="admin-modal-head">
+                <h2 id="add-item-title">Add Program</h2>
+                <button type="submit" class="modal-close" value="cancel" aria-label="Close">&times;</button>
+            </div>
+            <div id="program-fields">
+                <div class="form-group">
+                    <label for="program-image">Upload Image</label>
+                    <input type="file" id="program-image" name="image" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="program-name">Program Name</label>
+                    <input type="text" id="program-name" name="name" placeholder="Enter program name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="program-description">Description</label>
+                    <textarea id="program-description" name="description" placeholder="Enter program description" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn--secondary" id="program-cancel">Cancel</button>
+                <button type="submit" class="btn" id="add-item-submit">Add Program</button>
+            </div>
+        </form>
+    </dialog>
 
     <script src="auth.js"></script>
 </body>

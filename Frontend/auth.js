@@ -3,6 +3,27 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.getItem('fitnessAdminLoggedIn') === 'true';
     var authActions = document.querySelector('.nav__actions');
     var loginForm = document.querySelector('.login__form');
+    var programModal = document.getElementById('program-modal');
+    var addButtons = document.querySelectorAll('#program-add-button, #service-add-button');
+
+    if (addButtons.length && programModal) {
+        addButtons.forEach(function (addButton) {
+            addButton.addEventListener('click', function () {
+                var itemName = addButton.id === 'service-add-button' ? 'Service' : 'Program';
+                document.getElementById('add-item-title').textContent = 'Add ' + itemName;
+                document.getElementById('add-item-submit').textContent = 'Add ' + itemName;
+                programModal.showModal();
+            });
+        });
+
+        document.getElementById('program-cancel').addEventListener('click', function () {
+            programModal.close();
+        });
+
+        programModal.addEventListener('click', function (event) {
+            if (event.target === programModal) programModal.close();
+        });
+    }
 
     document.querySelectorAll('.join-now-link').forEach(function (link) {
         link.href = isLoggedIn ? 'membership.html' : 'login.html';
