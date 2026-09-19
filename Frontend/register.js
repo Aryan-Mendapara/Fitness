@@ -16,10 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        localStorage.setItem('fitnessUserEmail', email);
-        localStorage.setItem('fitnessUserPassword', password);
-        localStorage.removeItem('fitnessLoggedIn');
-        error.textContent = '';
-        window.location.href = 'login.html';
+        fetch('../backend/api.php?action=register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: password })
+        }).then(function (response) {
+            return response.json().then(function (data) {
+                if (!response.ok || !data.success) throw new Error(data.message || 'Registration failed.');
+                return data;
+            });
+        }).then(function () {
+            error.textContent = '';
+            window.location.href = 'login.html';
+        }).catch(function (requestError) { error.textContent = requestError.message; });
     });
 });

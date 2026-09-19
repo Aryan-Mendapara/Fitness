@@ -377,33 +377,39 @@
     </div>
 
     <script>
-
-        document.getElementById("joinForm").addEventListener("submit", function(e) {
-
-            e.preventDefault();
-
-            const name = document.getElementById("name").value;
-            const age = document.getElementById("age").value;
-            const phone = document.getElementById("phone").value;
-            const plan = document.getElementById("plan").value;
-
-            console.log("New Gym Member:");
-            console.log("Name:", name);
-            console.log("Age:", age);
-            console.log("Contact:", phone);
-            console.log("Plan:", plan);
-
-            document.getElementById("successMessage").style.display = "block";
-
-            document.getElementById("joinForm").reset();
-
-            document.getElementById("successMessage")
-                .scrollIntoView({
-                    behavior: "smooth"
+        document.getElementById("joinForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var form = event.target;
+            var data = {
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                gender: form.querySelector('input[name="gender"]:checked').value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                plan: document.getElementById("plan").value,
+                address: document.getElementById("address").value,
+                emergencyName: document.getElementById("emergencyName").value,
+                emergencyPhone: document.getElementById("emergencyPhone").value
+            };
+            fetch("../backend/api.php?action=join", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            }).then(function (response) {
+                return response.json().then(function (result) {
+                    if (!response.ok || !result.success) throw new Error(result.message || "Unable to submit application.");
+                    return result;
                 });
-
+            }).then(function () {
+                document.getElementById("successMessage").textContent = "Registration successful! Welcome to FITNESS.";
+                document.getElementById("successMessage").style.display = "block";
+                form.reset();
+                document.getElementById("successMessage").scrollIntoView({ behavior: "smooth" });
+            }).catch(function (error) {
+                document.getElementById("successMessage").textContent = error.message;
+                document.getElementById("successMessage").style.display = "block";
+            });
         });
-
     </script>
 
 </body>
