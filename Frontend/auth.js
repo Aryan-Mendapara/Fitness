@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var isLoggedIn = localStorage.getItem('fitnessLoggedIn') === 'true' ||
-        localStorage.getItem('fitnessAdminLoggedIn') === 'true';
+    var apiUrl = '../backend/api.php';
     var authActions = document.querySelector('.nav__actions');
     var loginForm = document.querySelector('.login__form');
     var programModal = document.getElementById('program-modal');
@@ -25,46 +24,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    document.querySelectorAll('.join-now-link').forEach(function (link) {
-        link.href = isLoggedIn ? 'membership.html' : 'login.html';
-    });
+    function request(action, options) {
+        options = options || {};
+        options.headers = Object.assign({ 'Content-Type': 'application/json' }, options.headers || {});
+        return fetch(apiUrl + '?action=' + encodeURIComponent(action), options).then(function (response) {
+            return response.json().then(function (data) {
+                if (!response.ok || !data.success) throw new Error(data.message || 'Request failed.');
+                return data;
+            });
+        });
+    }
 
-    if (authActions && isLoggedIn) {
+    function applyAuthState(session) {
+        document.querySelectorAll('.join-now-link').forEach(function (link) {
+            link.href = session.loggedIn ? 'membership.html' : 'login.html';
+        });
+        if (!authActions || (!session.loggedIn && !session.adminLoggedIn)) return;
         authActions.innerHTML = '<button type="button" class="btn btn--secondary" id="logout-button"><i class="bi bi-box-arrow-right auth-icon"></i>Logout</button><a href="membership.html" class="btn join-now-link">Join Now</a>';
         document.getElementById('logout-button').addEventListener('click', function () {
-            localStorage.removeItem('fitnessLoggedIn');
-            localStorage.removeItem('fitnessAdminLoggedIn');
-            authActions.innerHTML = '<a href="login.html" class="btn btn--secondary"><i class="bi bi-box-arrow-in-right auth-icon"></i>Login</a><a href="login.html" class="btn join-now-link">Join Now</a>';
+            request('logout', { method: 'POST' }).then(function () { window.location.href = 'index.html'; });
         });
     }
 
-    if (loginForm) {
-        if (isLoggedIn) {
-            window.location.href = 'service.html';
-            return;
-        }
+    request('session').then(function (session) {
+        applyAuthState(session);
+        if (loginForm && (session.loggedIn || session.adminLoggedIn)) window.location.href = 'service.html';
+    }).catch(function () { applyAuthState({ loggedIn: false, adminLoggedIn: false }); });
 
-        loginForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            var registeredEmail = localStorage.getItem('fitnessUserEmail');
-            var registeredPassword = localStorage.getItem('fitnessUserPassword');
-            var email = document.getElementById('email').value.trim().toLowerCase();
-            var password = document.getElementById('password').value;
-            var loginError = document.getElementById('login-error');
-
-            if (!registeredEmail || !registeredPassword) {
-                loginError.textContent = 'Please register before logging in.';
-                return;
-            }
-
-            if (email !== registeredEmail || password !== registeredPassword) {
-                loginError.textContent = 'Invalid email or password.';
-                return;
-            }
-
-            loginError.textContent = '';
-            localStorage.setItem('fitnessLoggedIn', 'true');
-            window.location.href = 'service.html';
-        });
-    }
+    if (loginForm) loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        request('login', { method: 'POST', body: JSON.stringify({ email: document.getElementById('email').value.trim(), password: document.getElementById('password').value }) })
+            .then(function () { window.location.href = 'service.html'; })
+            .catch(function (error) { document.getElementById('login-error').textContent = error.message; });
+    });
 });
