@@ -16,12 +16,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        fetch('../backend/api.php?action=register', {
+        var api = window.location.port === '5500' ? window.location.protocol + '//' + window.location.hostname + '/Fitness/backend/api.php' : '../backend/api.php';
+        fetch(api + '?action=register', {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, password: password })
         }).then(function (response) {
-            return response.json().then(function (data) {
+            return response.text().then(function (text) {
+                var data;
+                try { data = JSON.parse(text); } catch (parseError) { throw new Error('PHP API unavailable. Open the website through http://localhost/Fitness.'); }
                 if (!response.ok || !data.success) throw new Error(data.message || 'Registration failed.');
                 return data;
             });

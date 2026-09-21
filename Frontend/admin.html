@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FITNESS | Admin Panel</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260921-admin-pin">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -29,23 +29,31 @@
     <div class="admin-shell" id="admin-dashboard" hidden>
         <aside class="admin-sidebar">
             <a class="admin-brand" href="index.html"><img src="assets/FITNESS LOGO.png" alt="FITNESS Logo"></a>
-            <p class="admin-eyebrow">MANAGEMENT</p>
-            <nav class="admin-nav" aria-label="Admin sections">
-                <button class="admin-nav-item is-active" data-section="dashboard">Dashboard</button>
-                <button class="admin-nav-item" data-section="members">Members / Users</button>
-                <button class="admin-nav-item" data-section="plans">Membership Plans</button>
-                <button class="admin-nav-item" data-section="trainers">Trainers</button>
-                <button class="admin-nav-item" data-section="services">Services</button>
-                <button class="admin-nav-item" data-section="facilities">Facilities</button>
-                <button class="admin-nav-item" data-section="enquiries">Enquiries / Contact</button>
-                <button class="admin-nav-item" data-section="payments">Payments</button>
-                <button class="admin-nav-item" data-section="profile">Admin Profile</button>
+            <p class="admin-sidebar-label">WORKSPACE</p>
+            <nav class="admin-workspace-nav" aria-label="Workspace navigation">
+                <a class="admin-workspace-link" href="index.html" title="User Website" aria-label="User Website"><i class="bi bi-globe2"></i></a>
+                <a class="admin-workspace-link" href="#" id="admin-panel-toggle" title="Admin Panel" aria-label="Admin Panel"><i class="bi bi-grid-1x2-fill"></i></a>
             </nav>
-            <button type="button" class="admin-logout" id="admin-logout"><i class="bi bi-box-arrow-right auth-icon"></i>Logout</button>
+            <button type="button" class="admin-logout" id="admin-logout" title="Logout" aria-label="Logout"><i class="bi bi-box-arrow-right auth-icon"></i></button>
+        </aside>
+
+        <aside class="admin-management-sidebar">
+            <div class="admin-management-head"><button type="button" class="admin-sidebar-pin" id="admin-sidebar-pin" title="Collapse management menu" aria-label="Collapse management menu"><i class="bi bi-pin-angle"></i></button></div>
+            <nav class="admin-nav" aria-label="Admin sections">
+                <button class="admin-nav-item is-active" data-section="dashboard" title="Dashboard" aria-label="Dashboard"><i class="bi bi-speedometer2"></i><span>Dashboard</span></button>
+                <button class="admin-nav-item" data-section="members" title="Members / Users" aria-label="Members / Users"><i class="bi bi-people"></i><span>Members / Users</span></button>
+                <button class="admin-nav-item" data-section="plans" title="Membership Plans" aria-label="Membership Plans"><i class="bi bi-card-checklist"></i><span>Membership Plans</span></button>
+                <button class="admin-nav-item" data-section="trainers" title="Trainers" aria-label="Trainers"><i class="bi bi-person-badge"></i><span>Trainers</span></button>
+                <button class="admin-nav-item" data-section="services" title="Services" aria-label="Services"><i class="bi bi-person-workspace"></i><span>Services</span></button>
+                <button class="admin-nav-item" data-section="facilities" title="Facilities" aria-label="Facilities"><i class="bi bi-building"></i><span>Facilities</span></button>
+                <button class="admin-nav-item" data-section="enquiries" title="Enquiries / Contact" aria-label="Enquiries / Contact"><i class="bi bi-chat-left-text"></i><span>Enquiries / Contact</span></button>
+                <button class="admin-nav-item" data-section="payments" title="Payments" aria-label="Payments"><i class="bi bi-wallet2"></i><span>Payments</span></button>
+                <button class="admin-nav-item" data-section="profile" title="Admin Profile" aria-label="Admin Profile"><i class="bi bi-person-circle"></i><span>Admin Profile</span></button>
+            </nav>
         </aside>
 
         <main class="admin-main">
-            <header class="admin-topbar"><div><p class="admin-eyebrow">FITNESS MANAGEMENT</p><h1 id="section-title">Dashboard</h1></div><span class="admin-user-chip">Administrator</span></header>
+            <header class="admin-topbar"><div><p class="admin-eyebrow">FITNESS MANAGEMENT</p><h1 id="section-title">Dashboard</h1><p class="admin-topbar-caption">Keep your gym operations organized in one place.</p></div><span class="admin-user-chip"><i class="bi bi-shield-check"></i> Administrator</span></header>
             <section class="admin-view is-visible" data-view="dashboard">
                 <div class="admin-stats admin-stats--six">
                     <article class="admin-stat"><span>Total Members</span><strong data-stat="members">0</strong><small>Registered members</small></article>
@@ -57,16 +65,16 @@
                 </div>
                 <div class="admin-dashboard-grid">
                     <div class="admin-panel"><div class="admin-panel-header"><div><h2>Recent Registrations</h2><p>Latest members joining FITNESS</p></div><button class="admin-link" data-go="members">View all</button></div><div id="recent-members"></div></div>
-                    <div class="admin-panel"><div class="admin-panel-header"><div><h2>Quick Actions</h2><p>Manage your gym faster</p></div></div><div class="admin-quick-actions"><button data-go="members">Add or edit members <b>→</b></button><button data-go="plans">Manage membership plans <b>→</b></button><button data-go="enquiries">Review new enquiries <b>→</b></button></div></div>
+                    <div class="admin-panel"><div class="admin-panel-header"><div><h2>Quick Actions</h2><p>Manage your gym faster</p></div></div><div class="admin-quick-actions"><button data-go="members">Add or edit members <b>→</b></button><button data-go="plans">Manage membership plans <b>→</b></button><button data-go="services" data-add="services">Add service <b>+</b></button><button data-go="facilities" data-add="facilities">Add facility <b>+</b></button><button data-go="enquiries">Review new enquiries <b>→</b></button></div></div>
                 </div>
             </section>
-            <section class="admin-view" data-view="members"><div class="admin-section-head"><div><h2>Members / Users</h2><p>Manage member details and membership status.</p></div><button class="btn admin-add" data-entity="members">+ Add Member</button></div><div class="admin-panel admin-table-wrap" id="members-table"></div></section>
-            <section class="admin-view" data-view="plans"><div class="admin-section-head"><div><h2>Membership Plans</h2><p>Set plan pricing and duration.</p></div><button class="btn admin-add" data-entity="plans">+ Add Plan</button></div><div class="admin-panel admin-table-wrap" id="plans-table"></div></section>
-            <section class="admin-view" data-view="trainers"><div class="admin-section-head"><div><h2>Trainers</h2><p>Manage trainer profiles and contact details.</p></div><button class="btn admin-add" data-entity="trainers">+ Add Trainer</button></div><div class="admin-panel admin-table-wrap" id="trainers-table"></div></section>
-            <section class="admin-view" data-view="services"><div class="admin-section-head"><div><h2>Services</h2><p>Maintain the services offered by your gym.</p></div><button class="btn admin-add" data-entity="services">+ Add Service</button></div><div class="admin-panel admin-table-wrap" id="services-table"></div></section>
-            <section class="admin-view" data-view="facilities"><div class="admin-section-head"><div><h2>Facilities</h2><p>Describe equipment and facilities for members.</p></div><button class="btn admin-add" data-entity="facilities">+ Add Facility</button></div><div class="admin-panel admin-table-wrap" id="facilities-table"></div></section>
+            <section class="admin-view" data-view="members"><div class="admin-section-head"><div><span class="admin-section-kicker">PEOPLE</span><h2>Members / Users</h2><p>Manage member details and membership status.</p></div><button class="btn admin-add" data-entity="members"><i class="bi bi-plus-lg"></i> Add Member</button></div><div class="admin-panel admin-table-wrap" id="members-table"></div></section>
+            <section class="admin-view" data-view="plans"><div class="admin-section-head"><div><h2>Membership Plans</h2><p>Set plan pricing and duration.</p></div><button class="btn admin-add" data-entity="plans"><i class="bi bi-plus-lg"></i> Add Plan</button></div><div class="admin-panel admin-table-wrap" id="plans-table"></div></section>
+            <section class="admin-view" data-view="trainers"><div class="admin-section-head"><div><h2>Trainers</h2><p>Manage trainer profiles and contact details.</p></div><button class="btn admin-add" data-entity="trainers"><i class="bi bi-plus-lg"></i> Add Trainer</button></div><div class="admin-panel admin-table-wrap" id="trainers-table"></div></section>
+            <section class="admin-view" data-view="services"><div class="admin-section-head"><div><h2>Services</h2><p>Maintain the services offered by your gym.</p></div><button type="button" class="btn admin-add" id="add-service-button" data-entity="services"><i class="bi bi-plus-lg"></i> Add Service</button></div><div class="admin-panel admin-table-wrap" id="services-table"></div></section>
+            <section class="admin-view" data-view="facilities"><div class="admin-section-head"><div><h2>Facilities</h2><p>Describe equipment and facilities for members.</p></div><button type="button" class="btn admin-add" id="add-facility-button" data-entity="facilities"><i class="bi bi-plus-lg"></i> Add Facility</button></div><div class="admin-panel admin-table-wrap" id="facilities-table"></div></section>
             <section class="admin-view" data-view="enquiries"><div class="admin-section-head"><div><h2>Enquiries / Contact</h2><p>Review messages received from the website.</p></div></div><div class="admin-panel admin-table-wrap" id="enquiries-table"></div></section>
-            <section class="admin-view" data-view="payments"><div class="admin-section-head"><div><h2>Payments / Membership</h2><p>Track member payments, plans, amounts and dates.</p></div><button class="btn admin-add" data-entity="payments">+ Add Payment</button></div><div class="admin-panel admin-table-wrap" id="payments-table"></div></section>
+            <section class="admin-view" data-view="payments"><div class="admin-section-head"><div><h2>Payments / Membership</h2><p>Track member payments, plans, amounts and dates.</p></div><button class="btn admin-add" data-entity="payments"><i class="bi bi-plus-lg"></i> Add Payment</button></div><div class="admin-panel admin-table-wrap" id="payments-table"></div></section>
             <section class="admin-view" data-view="profile"><div class="admin-section-head"><div><h2>Admin Profile</h2><p>Update your administrator details.</p></div></div><div class="admin-panel admin-profile-panel"><form id="profile-form"><label>Admin Name<input name="name" required></label><label>Email<input type="email" name="email" required></label><label>New Password<input type="password" name="password" placeholder="Leave blank to keep current password"></label><button class="btn" type="submit">Save Profile</button></form><p class="admin-note" id="profile-note"></p></div></section>
         </main>
     </div>
@@ -74,6 +82,6 @@
     <dialog class="admin-modal" id="admin-modal"><form method="dialog" id="entity-form"><div class="admin-modal-head"><h2 id="modal-title">Add item</h2><button type="submit" class="modal-close" value="cancel" aria-label="Close">×</button></div><div id="modal-fields"></div><div class="admin-modal-actions"><button type="submit" class="btn btn--secondary" value="cancel">Cancel</button><button type="submit" class="btn" id="modal-save" value="save">Save</button></div></form></dialog>
     <p class="admin-note admin-toast" id="admin-note" role="status"></p>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="admin.js"></script>
+    <script src="admin.js?v=20260921-admin-pin"></script>
 </body>
 </html>

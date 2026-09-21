@@ -1,23 +1,37 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/vendor/autoload.php';
+const DB_HOST = '127.0.0.1';
+const DB_NAME = 'fitness_gym';
+const DB_USER = 'root';
+const DB_PASSWORD = '';
 
-use MongoDB\Client;
-use MongoDB\Database;
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, ['http://127.0.0.1:5500', 'http://localhost:5500'], true)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Allow-Headers: Content-Type');
+    header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
+}
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
+}
 
-const MONGODB_URI = 'mongodb://127.0.0.1:27017';
-const MONGODB_DATABASE = 'fitness_gym';
-
-function database(): Database
+function database(): PDO
 {
     static $database;
-    if ($database instanceof Database) {
-        return $database;
-    }
-    $uri = getenv('MONGODB_URI') ?: MONGODB_URI;
-    $name = getenv('MONGODB_DATABASE') ?: MONGODB_DATABASE;
-    $database = (new Client($uri))->selectDatabase($name);
+    if ($database instanceof PDO) return $database;
+
+    $host = getenv('DB_HOST') ?: DB_HOST;
+    $name = getenv('DB_NAME') ?: DB_NAME;
+    $user = getenv('DB_USER') ?: DB_USER;
+    $password = getenv('DB_PASSWORD') ?: DB_PASSWORD;
+    $database = new PDO("mysql:host={$host};dbname={$name};charset=utf8mb4", $user, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ]);
     return $database;
 }
 
@@ -33,13 +47,6 @@ function requestBody(): array
 {
     $body = json_decode(file_get_contents('php://input'), true);
     return is_array($body) ? $body : $_POST;
-}
-
-function requireAdmin(): void
-{
-    if (empty($_SESSION['admin_id'])) {
-        jsonResponse(['success' => false, 'message' => 'Admin login required.'], 401);
-    }
 }
 
 function cleanString(mixed $value, int $maxLength = 255): string

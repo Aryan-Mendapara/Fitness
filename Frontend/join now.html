@@ -391,12 +391,16 @@
                 emergencyName: document.getElementById("emergencyName").value,
                 emergencyPhone: document.getElementById("emergencyPhone").value
             };
-            fetch("../backend/api.php?action=join", {
+            var api = window.location.port === "5500" ? window.location.protocol + "//" + window.location.hostname + "/Fitness/backend/api.php" : "../backend/api.php";
+            fetch(api + "?action=join", {
                 method: "POST",
+                credentials: "include",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
             }).then(function (response) {
-                return response.json().then(function (result) {
+                return response.text().then(function (text) {
+                    var result;
+                    try { result = JSON.parse(text); } catch (parseError) { throw new Error("PHP API unavailable. Open the website through http://localhost/Fitness."); }
                     if (!response.ok || !result.success) throw new Error(result.message || "Unable to submit application.");
                     return result;
                 });
@@ -411,6 +415,7 @@
             });
         });
     </script>
+    <script src="auth.js"></script>
 
 </body>
 </html>

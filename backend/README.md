@@ -1,9 +1,9 @@
-# FITNESS PHP + MongoDB backend
+# FITNESS PHP + MySQL backend
 
-1. Install PHP, the MongoDB PHP extension, Composer, and MongoDB Community Server or MongoDB Atlas.
-2. From this folder run `composer install`.
-3. Set `MONGODB_URI` and `MONGODB_DATABASE` in `config.php` if MongoDB is not local.
-4. Run `php install.php` once to create the default admin and starter plans.
-5. Serve the project from the project root, for example `php -S localhost:8000`, then open `http://localhost:8000/Frontend/index.html`.
+1. Install XAMPP and start **Apache** and **MySQL**.
+2. Copy the `Fitness` folder to `C:/xampp/htdocs/Fitness`.
+3. Open `http://localhost/phpmyadmin` once, then visit `http://localhost/Fitness/backend/install.php` to create the database and tables.
+4. Open `http://localhost/Fitness/Frontend/index.html`.
+5. Default admin: `admin@fitness.com` / `admin123`. Change it before deployment.
 
-Default admin login: `admin@fitness.com` / `admin123`. Change this password before deploying.
+The backend uses PHP PDO with the XAMPP MySQL defaults: host `127.0.0.1`, user `root`, empty password, database `fitness_gym`. Override them with `DB_HOST`, `DB_NAME`, `DB_USER`, and `DB_PASSWORD` environment variables when needed.
