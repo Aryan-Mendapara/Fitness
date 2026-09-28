@@ -1,0 +1,119 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>FITNESS | About</title> <link rel="stylesheet" href="../css/style.css"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> </head> <body>
+<nav>
+
+    <div class="nav__logo">
+        <a href="index.html">
+            <img src="../assets/FITNESS LOGO.png" alt="FITNESS Logo">
+        </a>
+    </div>
+
+    <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="program.html">Facilities</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+    </ul>
+
+    <div class="nav__actions" id="auth-actions">
+        <a href="login.html" class="btn btn--secondary"><i class="bi bi-box-arrow-in-right auth-icon"></i>Login</a>
+        <a href="login.html" class="btn join-now-link">Join Now</a>
+    </div>
+
+</nav>
+
+<main class="about-page">
+    <section class="about-hero">
+        <div>
+            <p class="about-eyebrow">THE FITNESS STANDARD</p>
+            <h1>More than a gym.<br><span>A place to become.</span></h1>
+            <p class="about-lead">FITNESS brings intelligent training, capable coaching, and a welcoming community together so progress feels clear, consistent, and personal.</p>
+            <div class="about-actions"><a href="membership.html" class="btn">Explore membership</a><a href="community.html" class="btn btn--secondary">Meet the community</a></div>
+        </div>
+        <div class="about-hero-note"><i class="bi bi-stars"></i><strong>Built for every starting point</strong><span>Whether you are taking your first step or chasing a new personal best, your next session has a place here.</span></div>
+    </section>
+
+    <section class="about-stats" aria-label="FITNESS highlights">
+        <div><strong>03</strong><span>Founders with one vision</span></div>
+        <div><strong>06</strong><span>Ways to train and grow</span></div>
+        <div><strong>01</strong><span>Community-first standard</span></div>
+        <div><strong>100%</strong><span>Focused on your progress</span></div>
+    </section>
+
+    <section class="about-story">
+        <div><p class="about-eyebrow">OUR APPROACH</p><h2>Progress should feel <span>possible.</span></h2></div>
+        <div><p>We created FITNESS for people who want more from their training than a room full of equipment. You get a thoughtful environment, useful guidance, and enough flexibility to build a routine that survives real life.</p><p>Every detail is designed to help you show up, train with purpose, and leave knowing exactly what to do next.</p></div>
+    </section>
+
+    <section class="about-values">
+        <article><i class="bi bi-compass"></i><h3>Train with purpose</h3><p>Clear goals and practical programming replace guesswork.</p></article>
+        <article><i class="bi bi-people"></i><h3>Grow together</h3><p>A supportive room makes consistency easier and progress more rewarding.</p></article>
+        <article><i class="bi bi-heart-pulse"></i><h3>Respect the process</h3><p>Good form, smart recovery, and sustainable effort come first.</p></article>
+    </section>
+
+    <section class="founders-section">
+        <div class="about-section-heading"><div><p class="about-eyebrow">THE PEOPLE BEHIND FITNESS</p><h2>Meet our <span>founders.</span></h2></div><p>Three students, one shared belief: fitness should make people feel stronger in every part of life.</p></div>
+        
+        <div class="founder-profile">
+            <button class="founder-image founder-image--button" type="button" data-founder="kirtan" aria-label="View Kirtan Sheladiya profile">
+                <img src="../assets/kirtan photo.jpeg" alt="Founder 1">
+                <span>View profile <i class="bi bi-arrow-up-right"></i></span>
+            </button>
+            <div class="founder-info">
+                <h3>Kirtan Sheladiya</h3>
+                <p><strong>Age:</strong> 19</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Passion:</strong> student,  Creating a holistic fitness community</p>
+                <p><strong>Experience:</strong> 3+ years in sports management and fitness entrepreneurship</p>
+            </div>
+        </div> 
+
+        <div class="founder-profile founder-profile--reverse">
+            <button class="founder-image founder-image--button" type="button" data-founder="aryan" aria-label="View Aryan Mendapara profile">
+                <img src="../assets/ARYAN PHOTO.jpeg" alt="Founder 2">
+                <span>View profile <i class="bi bi-arrow-up-right"></i></span>
+            </button>
+            <div class="founder-info">
+                <h3>Aryan Mendapara</h3>
+                <p><strong>Age:</strong> 19</p>
+                <p><strong>Gender:</strong> male</p>
+                <p><strong>Passion:</strong> student, Inspiring men in fitness and wellness</p>
+                <p><strong>Experience:</strong> 3+ years in fitness training, nutrition specialist and wellness coach</p>
+            </div>
+        </div>
+
+        <div class="founder-profile">
+            <button class="founder-image founder-image--button" type="button" data-founder="prince" aria-label="View Prince Sojitra profile">
+                <img src="../assets/prince photo.jpeg" alt="Founder 3">
+                <span>View profile <i class="bi bi-arrow-up-right"></i></span>
+            </button>
+            <div class="founder-info">
+                <h3>Prince Sojitra</h3>
+                <p><strong>Age:</strong> 19</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Passion:</strong>student</p>
+                <p><strong>Experience:</strong> 1+ years in fitness industry </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-cta"><p class="about-eyebrow">YOUR NEXT CHAPTER</p><h2>Make your next session count.</h2><a href="login.html" class="btn join-now-link">Start your journey</a></section>
+
+</main>
+
+<dialog class="founder-modal" id="founder-modal">
+    <button class="founder-modal-close" id="founder-modal-close" type="button" aria-label="Close profile">&times;</button>
+    <img id="founder-modal-image" src="" alt="">
+    <div><p class="about-eyebrow">FITNESS FOUNDING TEAM</p><h2 id="founder-modal-name"></h2><p id="founder-modal-role"></p><p id="founder-modal-story"></p></div>
+</dialog>
+
+
+<footer>
+    <p>&copy; 2026 FITNESS Gym. All rights reserved.</p>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/about.js"></script>
+</body> </html>

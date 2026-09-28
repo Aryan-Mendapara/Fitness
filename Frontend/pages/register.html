@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS | Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="login-page">
+    <main class="page">
+        <h1>Create your <span>account</span></h1>
+        <div class="login__container">
+            <form class="login__form" id="register-form">
+                <button type="button" class="login__back" id="register-back">&larr; Back</button>
+                <div>
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" placeholder="Enter your name" required>
+                </div>
+                <div>
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-row">
+                    <div><label for="register-phone">Phone</label><input type="tel" id="register-phone" placeholder="Your phone number" required maxlength="30"></div>
+                    <div><label for="register-dob">Date of birth</label><input type="date" id="register-dob" required></div>
+                </div>
+                <div>
+                    <label for="register-gender">Gender</label>
+                    <select id="register-gender" required><option value="" selected disabled>Select an option</option><option value="Female">Female</option><option value="Male">Male</option><option value="Non-binary">Non-binary</option><option value="Prefer not to say">Prefer not to say</option></select>
+                </div>
+                <div><label for="register-address">Address</label><textarea id="register-address" placeholder="Your city and address" rows="2" required maxlength="500"></textarea></div>
+                <div>
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" placeholder="Create a password" required>
+                </div>
+                <div>
+                    <label for="register-confirm">Confirm Password</label>
+                    <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <small class="login__error" id="register-error"></small>
+            </form>
+            <div class="login__links login__links--centered">
+                <a href="login.html">Already registered? Login</a>
+            </div>
+        </div>
+    </main>
+    <footer><p>&copy; 2026 FITNESS Gym. All rights reserved.</p></footer>
+    <script src="../js/config.js"></script>
+    <script src="../js/register.js"></script>
+    <script src="../js/page-transition.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS | Welcome</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="welcome-page">
+    <nav>
+        <div class="nav__logo">
+            <a href="index.html"><img src="../assets/FITNESS LOGO.png" alt="FITNESS Logo"></a>
+        </div>
+        <ul class="nav__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Facilities</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="ai-coach.html">AI Coach</a></li>
+        </ul>
+        <div class="nav__actions">
+            <button type="button" class="btn btn--secondary" id="logout-button"><i class="bi bi-box-arrow-right auth-icon"></i>Logout</button>
+        </div>
+    </nav>
+
+    <main class="welcome-content page">
+        <div class="welcome-spark" aria-hidden="true"><i class="bi bi-lightning-charge-fill"></i></div>
+        <p class="welcome-eyebrow">MEMBER ACCESS · SESSION READY</p>
+        <h1>Welcome to <span>FITNESS</span></h1>
+        <p class="welcome-message">Your training journey starts here. Open your dashboard, choose your next move, and build momentum one session at a time.</p>
+        <div class="welcome-actions">
+            <a href="index.html" class="btn welcome-primary-action"><i class="bi bi-grid-1x2-fill"></i> Enter main dashboard</a>
+            <a href="join.html" class="btn btn--secondary">Choose a membership</a>
+            <a href="service.html" class="btn btn--secondary">Explore Services</a>
+            <a href="profile.html" class="btn btn--secondary">View Profile</a>
+            <a href="ai-coach.html" class="btn btn--secondary">Meet AI Coach</a>
+        </div>
+        <div class="welcome-quick-strip"><span><i class="bi bi-check-circle-fill"></i> Account active</span><span><i class="bi bi-fire"></i> Momentum starts now</span><span><i class="bi bi-stars"></i> Coach available</span></div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/page-transition.js"></script>
+</body>
+</html>

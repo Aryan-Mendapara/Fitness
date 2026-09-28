@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS | Member Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="profile-page">
+    <nav>
+        <div class="nav__logo"><a href="index.html"><img src="../assets/FITNESS LOGO.png" alt="FITNESS Logo"></a></div>
+        <ul class="nav__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Facilities</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="ai-coach.html">AI Coach</a></li>
+        </ul>
+        <div class="nav__actions"><a href="profile.html" class="btn btn--secondary">Profile</a><button type="button" class="btn btn--secondary" id="logout-button">Logout</button></div>
+    </nav>
+
+    <main class="profile-layout page">
+        <div class="profile-heading">
+            <p class="welcome-eyebrow">MEMBER ACCOUNT</p>
+            <h1>Your <span>Profile</span></h1>
+            <p>Keep your contact details current and manage your account securely.</p>
+        </div>
+        <section class="profile-grid">
+            <article class="profile-card profile-summary">
+                <div class="profile-avatar" id="profile-avatar">F</div>
+                <h2 id="profile-name">Loading profile...</h2>
+                <p id="profile-email"></p>
+                <span class="profile-status" id="profile-status">Member</span>
+                <dl class="profile-facts">
+                    <div><dt>Plan</dt><dd id="profile-plan">Not selected</dd></div>
+                    <div><dt>Joined</dt><dd id="profile-joined">Not available</dd></div>
+                    <div><dt>Application</dt><dd id="profile-application">Not submitted</dd></div>
+                </dl>
+            </article>
+            <article class="profile-card">
+                <h2>Account details</h2>
+                <form id="profile-form" class="profile-form">
+                    <label for="profile-name-input">Full name<input id="profile-name-input" name="name" required maxlength="120"></label>
+                    <label for="profile-email-input">Email<input id="profile-email-input" type="email" readonly></label>
+                    <label for="profile-phone-input">Phone<input id="profile-phone-input" name="phone" type="tel" maxlength="30" placeholder="Add your phone number"></label>
+                    <div class="form-row">
+                        <label for="profile-dob-input">Date of birth<input id="profile-dob-input" name="dateOfBirth" type="date"></label>
+                        <label for="profile-gender-input">Gender<select id="profile-gender-input" name="gender"><option value="">Select an option</option><option value="Female">Female</option><option value="Male">Male</option><option value="Non-binary">Non-binary</option><option value="Prefer not to say">Prefer not to say</option></select></label>
+                    </div>
+                    <label for="profile-address-input">Address<textarea id="profile-address-input" name="address" rows="2" maxlength="500" placeholder="Add your address"></textarea></label>
+                    <label for="profile-password-input">New password<input id="profile-password-input" name="password" type="password" minlength="6" placeholder="Leave blank to keep current password"></label>
+                    <button class="btn" type="submit">Save changes</button>
+                    <p class="profile-note" id="profile-note" role="status"></p>
+                </form>
+                <div class="profile-danger">
+                    <h3>Delete account</h3>
+                    <p>This permanently removes your member account and signs you out.</p>
+                    <label for="delete-password-input">Current password<input id="delete-password-input" type="password" minlength="6" placeholder="Confirm your password"></label>
+                    <button type="button" class="btn btn--danger" id="delete-account-button">Delete my account</button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <script src="../js/config.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

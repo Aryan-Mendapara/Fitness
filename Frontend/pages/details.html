@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNESS | Details</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="details-page">
+    <nav>
+        <div class="nav__logo"><a href="index.html"><img src="../assets/FITNESS LOGO.png" alt="FITNESS Logo"></a></div>
+        <ul class="nav__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="program.html">Facilities</a></li>
+            <li><a href="membership.html">Membership</a></li>
+            <li><a href="service.html">Service</a></li>
+        </ul>
+        <div class="nav__actions"><a href="index.html" class="btn btn--secondary"><i class="bi bi-arrow-left"></i> Back</a></div>
+    </nav>
+    <main class="details-layout page" id="details-content">
+        <div class="details-hero"><img id="details-image" src="" alt=""><div><p class="welcome-eyebrow" id="details-type">FITNESS EXPERIENCE</p><h1 id="details-title">Loading...</h1><p id="details-summary"></p><a href="login.html" class="btn">Start your journey</a></div></div>
+        <section class="details-body"><div><h2>What you get</h2><ul id="details-benefits"></ul></div><aside><p class="details-kicker">DESIGNED FOR PROGRESS</p><p id="details-description"></p><div class="details-facts"><div><strong>Best for</strong><span id="details-best-for"></span></div><div><strong>Session style</strong><span id="details-session"></span></div><div><strong>Typical duration</strong><span id="details-duration"></span></div><div><strong>Equipment</strong><span id="details-equipment"></span></div></div></aside></section>
+        <section class="details-exercises"><div><p class="details-kicker">WHAT YOU WILL DO</p><h2>Exercises and focus</h2></div><div class="exercise-list" id="details-exercises"></div></section>
+        <section class="details-ai-panel"><div><p class="details-kicker">YOUR PERSONAL COACH</p><h2>Ask about <span id="details-ai-title">this experience</span></h2><p>Ask a question about this program or service. The coach answers with this page's context in mind.</p></div><div class="details-ai-chat"><div id="details-ai-answer" class="details-ai-answer"><i class="bi bi-stars"></i><span>Try asking: “Is this suitable for a beginner?”</span></div><form id="details-ai-form"><input id="details-ai-question" type="text" placeholder="Ask a related question..." autocomplete="off"><button class="btn" type="submit" aria-label="Ask AI Coach"><i class="bi bi-arrow-up"></i></button></form></div></section>
+    </main>
+    <script src="../js/details.js"></script>
+</body>
+</html>
