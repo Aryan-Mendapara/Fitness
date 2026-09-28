@@ -165,7 +165,7 @@ margin: auto;
 padding: 4rem clamp(1rem, 8vw, 8rem);
 
 position: relative;
-background-image: url("../assets/Modern Gym photo.jpg");
+background-image: url("../assets/images/facilities/Modern Gym photo.jpg");
 background-size: cover;
 background-position: center;
 border-radius: 0;
@@ -3623,7 +3623,7 @@ body.home-page {
 .home-orb--three { bottom: -18%; left: 30%; width: clamp(15rem, 25vw, 26rem); animation-delay: -9s; }
 
 .home-page .hero {
-    background-image: url("../assets/Strength Training photo.jpg");
+    background-image: url("../assets/images/programs/Strength Training photo.jpg");
     background-position: center 35%;
 }
 

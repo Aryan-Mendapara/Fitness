@@ -46,16 +46,31 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             return;
         }
-        var logoutButton = document.getElementById('logout-button');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', function () {
-                request('logout', { method: 'POST' }).then(function () { window.location.href = '../index.html'; });
-            });
-        }
     }
+
+    function bindLogoutButton() {
+        var button = document.getElementById('logout-button');
+        if (!button || button.dataset.logoutBound) return;
+
+        button.dataset.logoutBound = 'true';
+        button.addEventListener('click', function () {
+            request('logout', { method: 'POST' }).catch(function () {
+                // The public landing page is still the correct exit when the PHP API is unavailable.
+            }).finally(function () {
+                window.location.href = '../index.html';
+            });
+        });
+    }
+
+    bindLogoutButton();
 
     request('session').then(function (session) {
         applyAuthState(session);
+        bindLogoutButton();
+        if (document.body.classList.contains('welcome-page') && !session.loggedIn && !session.adminLoggedIn) {
+            window.location.href = '../index.html';
+            return;
+        }
         if (document.body.classList.contains('home-page') && !session.loggedIn && !session.adminLoggedIn) {
             window.location.href = 'login.html';
             return;
